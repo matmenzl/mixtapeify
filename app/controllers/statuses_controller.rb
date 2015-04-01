@@ -1,6 +1,8 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /statuses
   # GET /statuses.json
   def index
@@ -71,4 +73,11 @@ class StatusesController < ApplicationController
     def status_params
       params.require(:status).permit(:name, :content)
     end
+
+
+
+
+
+
+
 end
