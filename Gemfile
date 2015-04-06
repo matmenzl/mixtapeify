@@ -7,6 +7,9 @@ gem 'rails', '4.1.8'
 gem 'sqlite3'
 gem 'devise'
 gem 'simple_form'
+gem 'omniauth'
+gem 'rspotify'
+gem 'pry'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
