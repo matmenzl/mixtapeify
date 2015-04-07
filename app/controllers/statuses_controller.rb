@@ -16,7 +16,6 @@ class StatusesController < ApplicationController
   # GET /statuses/new
   def new
     @status = current_user.statuses.new
-
     spotify_user = rspotify_authenticate
     @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
   end
@@ -30,7 +29,7 @@ class StatusesController < ApplicationController
   # POST /statuses
   # POST /statuses.json
   def create
-    @status = Status.new(status_params)
+    @status = current_user.statuses.new(status_params)
 
     respond_to do |format|
       if @status.save
