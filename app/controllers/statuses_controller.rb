@@ -1,8 +1,6 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
-
-
   # GET /statuses
   # GET /statuses.json
   def index
@@ -12,15 +10,21 @@ class StatusesController < ApplicationController
   # GET /statuses/1
   # GET /statuses/1.json
   def show
+    @spotify_user = rspotify_authenticate(@status.user.uid)
   end
 
   # GET /statuses/new
   def new
-    @status = Status.new
+    @status = current_user.statuses.new
+
+    spotify_user = rspotify_authenticate
+    @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
   end
 
   # GET /statuses/1/edit
   def edit
+    spotify_user = rspotify_authenticate
+    @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
   end
 
   # POST /statuses
@@ -71,7 +75,7 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:name, :content)
+      params.require(:status).permit(:name, :content, :playlist)
     end
 
 

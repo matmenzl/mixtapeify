@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable,
      :omniauthable, :omniauth_providers => [:spotify]
 
+  has_many :statuses, dependent: :destroy
+
   def self.from_omniauth(auth)
+    binding.pry
     where(uid: auth.info.id).first_or_create do |user|
       user.uid = auth.info.id
       user.href = auth.info.href

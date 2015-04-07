@@ -10,8 +10,10 @@
       </ul>
     </div>
   <% end %>
- <%= f.input :user_id %>
+ <%= f.input :name %>
  <%= f.input :content %>
+ <%= f.label :playlist, "Select a playlist:" %>
+ <%= f.select :playlist, options_for_select(@playlists) %>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
