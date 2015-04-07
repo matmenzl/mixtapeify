@@ -12,9 +12,9 @@
   <% end %>
  <%= f.input :name %>
  <%= f.input :content %>
- <%= f.label :playlist, "Select a playlist:" %>
+ <%= f.label :playlist, "Select a Spotify playlist:" %><br>
  <%= f.select :playlist, options_for_select(@playlists) %>
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions"><br>
+    <%= f.button :submit, "Submit your Hunt" %>
   </div>
 <% end %>

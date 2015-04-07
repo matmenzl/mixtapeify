@@ -1,6 +1,6 @@
 <div class="page-header">
-  <h1>Mixtapes
-  <%= link_to "Post a new MXTP", new_status_path, class: "btn btn-small btn-primary" %>
+  <h1>All Hunts
+  <%= link_to "Post a new Hunt", new_status_path, class: "btn btn-small btn-primary" %>
 </h1>
 </div>
 
@@ -14,8 +14,9 @@
     <%= link_to time_ago_in_words(status.created_at) + " ago", status %> 
     <span class="admin">
       | <%= link_to "Edit", edit_status_path(status) %>
-      | <%= link_to "Delete", status, method: :delete, data:{ confirm: "Are you sure you want to delete this Mixtape?"} %>
+      | <%= link_to "Delete", status, method: :delete, data:{ confirm: "Are you sure you want to delete this Hunt?"} %>
     </span>
+
   </div>
 </div>
 

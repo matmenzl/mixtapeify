@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mixtapeify</title>
+  <title>Spotihunt</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -16,30 +16,38 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">MXTPFY</a>
+      <a class="navbar-brand" href="#">SPOTIHUNT</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "All MXTP", statuses_path %></li>
+        <li class="active"><%= link_to "ALL HUNTS", statuses_path %></li>
 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li><a href="#">About</a></li>
   </div><!-- container-fluid-->
   	<div>
-      <ul class="nav nabar-nav">
-      </ul>
       <p class="navbar-text pull-right">
 <% if user_signed_in? %>
-  Logged in as <strong><%= current_user.name %></strong>.
+  <strong><%= current_user.name %></strong> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 <% end %>
   </div>
-  </div><!-- containter-fluid-->
+  </div><!-- container-fluid-->
 </nav>
 		<div class="container">
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
+
+<div class="jumbotron">
+<h2>
+<p>
+  Sign in with your Spotify-Account and post a "Hunt" - a Spotify-Playlist you think the world should know about. 
+</p>
+</h2>
+  <p><a class="btn btn-primary btn-lg" href="/users/auth/spotify" role="button">Sign Up with your Spotify-Account</a>
+</div>
+
 <%= yield %>
 	
 		</div><!-- container -->

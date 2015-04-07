@@ -77,6 +77,7 @@ class StatusesController < ApplicationController
       params.require(:status).permit(:name, :content, :playlist)
     end
 
+  
 
 
 

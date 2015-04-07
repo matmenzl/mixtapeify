@@ -1,16 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Title:</strong><br>
   <%= @status.name %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>Description:</strong><br>
   <%= @status.content %>
 </p>
-<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:<%=@spotify_user.id%>&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe><br>
-<iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br>
+
+<p>
+	<strong>User:</strong><br>
+<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:<%=@spotify_user.id%>&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
+</p>
+
+<p>
+	<strong>Hunt:</strong><br>
+<iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+</p>
+<br>
 
 <%= link_to 'Edit', edit_status_path(@status) %> |
 <%= link_to 'Back', statuses_path %>
