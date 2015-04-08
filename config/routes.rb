@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/about'
+
+  get 'static_pages/contact'
+
 root to: 'statuses#index'
 devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :statuses

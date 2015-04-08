@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
+  <%= f.label :name, "What's so special about this playlist?" %><br>
  <%= f.input :name %>
+ <%= f.label :content, "There must be more about this playlist, right?" %><br>
  <%= f.input :content %>
  <%= f.label :playlist, "Select a Spotify playlist:" %><br>
  <%= f.select :playlist, options_for_select(@playlists) %>
