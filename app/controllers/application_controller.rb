@@ -18,4 +18,7 @@ class ApplicationController < ActionController::Base
     RSpotify.authenticate("e7d5e458e14f4e9ea418dddb9c8b22d0", "dc8ce016ad794c5aa985d3a70b03c799")
     RSpotify::User.find(user || current_user.uid)
   end
+
+
+  
 end

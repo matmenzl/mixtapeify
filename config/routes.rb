@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   get 'static_pages/contact'
 
-root to: 'statuses#index'
+  get 'home/home'
+
+  get 'status/index'
+
+root to: 'home#home'
 devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :statuses
 
