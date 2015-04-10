@@ -3,12 +3,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses
   # GET /statuses.json
-  
-   
- 
-
-
-  def index
+    def index
     @statuses = Status.all.order("created_at DESC")
   end
 
@@ -81,12 +76,4 @@ class StatusesController < ApplicationController
     def status_params
       params.require(:status).permit(:name, :content, :playlist)
     end
-
-  
-
-
-
-
-
-
 end
