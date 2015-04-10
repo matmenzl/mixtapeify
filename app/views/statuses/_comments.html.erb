@@ -10,7 +10,10 @@
                 <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
             </ul>            
             <div class="tab-content">
-                <div class="tab-pane active" id="comments-logout">                
+                <div class="tab-pane active" id="comments-logout">
+                  <% if @status.comments.empty? %>
+                    Be first to <a href="#add-comment" role="tab" data-toggle="tab">leave your feedback</a> about this playlist!
+                  <% else %>
                     <ul class="media-list">
                       <% @status.comments.each do |comment| %>
                         <li class="media">
@@ -32,26 +35,27 @@
                         </li>  
                       <% end %>        
                     </ul> 
+                  <% end %>
                 </div>
                 <div class="tab-pane" id="add-comment">
                   <%= form_for [@status, @status.comments.new], html: { class: "form-horizontal", id: "commentForm" } do |f| %>
-                        <div class="form-group">
-                          <%= label_tag :title, "Title", class: "col-sm-2 control-label" %>
-                          <div class="col-sm-10 comment-input">
-                            <%= f.text_field :title, class: "form-control", required: "true" %>
-                          </div>
-                          <%= label_tag :comment, "Comment", class: "col-sm-2 control-label" %>
-                          <div class="col-sm-10 comment-input">
-                            <%= f.text_area :comment, class: "form-control", id: "addComment", rows: 5, required: "true" %>
-                          </div>
+                    <div class="form-group">
+                      <%= label_tag :title, "Title", class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10 comment-input">
+                        <%= f.text_field :title, class: "form-control", required: "true" %>
+                      </div>
+                      <%= label_tag :comment, "Comment", class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10 comment-input">
+                        <%= f.text_area :comment, class: "form-control", id: "addComment", rows: 5, required: "true" %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">                    
+                          <%= button_tag type: "submit", class: "btn btn-success btn-circle text-uppercase", id: "submitComment" do %>
+                            <span class="fa fa-paper-plane"></span> Submit comment
+                          <% end %>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">                    
-                              <%= button_tag type: "submit", class: "btn btn-success btn-circle text-uppercase", id: "submitComment" do %>
-                                <span class="fa fa-paper-plane"></span> Submit comment
-                              <% end %>
-                            </div>
-                        </div>            
+                    </div>            
                   <% end %>
                 </div>
             </div>
