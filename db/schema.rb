@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410101455) do
+ActiveRecord::Schema.define(version: 20150410120948) do
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150410101455) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "playlist"
+    t.string   "image"
   end
 
   add_index "statuses", ["user_id"], name: "index_statuses_on_user_id"
