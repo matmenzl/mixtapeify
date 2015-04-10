@@ -1,22 +1,29 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: :index
 
   # GET /statuses
   # GET /statuses.json
-    def index
-    @statuses = Status.all.order("created_at DESC")
+  def index
+    authenticate_user! if params[:page]
+    rspotify_authenticate
+
+    @statuses = Status.all.paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
   end
 
   # GET /statuses/1
   # GET /statuses/1.json
   def show
-    @spotify_user = rspotify_authenticate(@status.user.uid)
+    rspotify_authenticate
+    # @spotify_user = RSpotify::User.find(current_user.uid)
+    @spotify_user = RSpotify::User.find("wizzler")
   end
 
   # GET /statuses/new
   def new
     @status = current_user.statuses.new
-    spotify_user = rspotify_authenticate
+    rspotify_authenticate
+    spotify_user = RSpotify::User.find("wizzler")
     @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
   end
 
@@ -30,6 +37,8 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = current_user.statuses.new(status_params)
+    # @status.image = RSpotify::Playlist.find(current_user.uid, @status.playlist).images.first["url"]
+    @status.image = RSpotify::Playlist.find("wizzler", @status.playlist).images.first["url"]
 
     respond_to do |format|
       if @status.save

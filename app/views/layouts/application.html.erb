@@ -30,8 +30,9 @@
   	<div>
       <p class="navbar-text pull-right">
         <% if user_signed_in? %>
-        <strong><%= current_user.name %></strong> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <%= image_tag current_user.image, width: "20", height: "20" %>
+          <strong><%= current_user.name %></strong> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% end %>
     </div>
 </nav>
