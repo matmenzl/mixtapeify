@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1" id="logout">
+        <div class="page-header">
+            <h3 class="reviews">Leave your comment</h3>
+        </div>
+        <div class="comment-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+                <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+            </ul>            
+            <div class="tab-content">
+                <div class="tab-pane active" id="comments-logout">                
+                    <ul class="media-list">
+                      <% @status.comments.each do |comment| %>
+                        <li class="media">
+                          <a class="pull-left" href="#">
+                            <%= image_tag comment.user.try(:image), class: "media-object img-circle" %>
+                          </a>
+                          <div class="media-body">
+                            <div class="well well-lg">
+                                <h4 class="media-heading text-uppercase reviews"><%= comment.title %></h4>
+                                <ul class="media-date reviews list-inline">
+                                  <li><%= comment.created_at %></li>
+                                  <h5 class="media-reviews"><em>by <%= comment.user.try(:name) %></em></h5>
+                                </ul>
+                                <p class="media-comment">
+                                  <%= comment.comment %>
+                                </p>
+                            </div>              
+                          </div>
+                        </li>  
+                      <% end %>        
+                    </ul> 
+                </div>
+                <div class="tab-pane" id="add-comment">
+                  <%= form_for [@status, @status.comments.new], html: { class: "form-horizontal", id: "commentForm" } do |f| %>
+                        <div class="form-group">
+                          <%= label_tag :title, "Title", class: "col-sm-2 control-label" %>
+                          <div class="col-sm-10 comment-input">
+                            <%= f.text_field :title, class: "form-control", required: "true" %>
+                          </div>
+                          <%= label_tag :comment, "Comment", class: "col-sm-2 control-label" %>
+                          <div class="col-sm-10 comment-input">
+                            <%= f.text_area :comment, class: "form-control", id: "addComment", rows: 5, required: "true" %>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">                    
+                              <%= button_tag type: "submit", class: "btn btn-success btn-circle text-uppercase", id: "submitComment" do %>
+                                <span class="fa fa-paper-plane"></span> Submit comment
+                              <% end %>
+                            </div>
+                        </div>            
+                  <% end %>
+                </div>
+            </div>
+        </div>
+  </div>
+  </div>

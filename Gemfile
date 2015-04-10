@@ -11,6 +11,7 @@ gem 'omniauth'
 gem 'rspotify'
 gem 'pry'
 gem 'will_paginate', '~> 3.0.5'
+gem 'acts_as_commentable'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
