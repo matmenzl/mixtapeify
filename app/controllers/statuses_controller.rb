@@ -15,15 +15,15 @@ class StatusesController < ApplicationController
   # GET /statuses/1.json
   def show
     rspotify_authenticate
-    # @spotify_user = RSpotify::User.find(current_user.uid)
-    @spotify_user = RSpotify::User.find("wizzler")
+    @spotify_user = RSpotify::User.find(status.user.try(:uid))
+    # @spotify_user = RSpotify::User.find("wizzler")
   end
 
   # GET /statuses/new
   def new
     @status = current_user.statuses.new
     rspotify_authenticate
-    spotify_user = RSpotify::User.find("wizzler")
+    spotify_user = RSpotify::User.find(current_user.uid)
     @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
   end
 
@@ -37,8 +37,8 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = current_user.statuses.new(status_params)
-    # @status.image = RSpotify::Playlist.find(current_user.uid, @status.playlist).images.first["url"]
-    @status.image = RSpotify::Playlist.find("wizzler", @status.playlist).images.first["url"]
+    @status.image = RSpotify::Playlist.find(current_user.uid, @status.playlist).images.first["url"]
+    # @status.image = RSpotify::Playlist.find("wizzler", @status.playlist).images.first["url"]
 
     respond_to do |format|
       if @status.save
