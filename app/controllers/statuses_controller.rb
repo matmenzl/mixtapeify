@@ -75,6 +75,23 @@ class StatusesController < ApplicationController
     end
   end
 
+  def vote
+    @status = Status.find(params[:status_id])
+    params[:dir] == "up" ? current_user.likes(@status) : current_user.dislikes(@status)
+  end
+
+  def follow
+    @status = Status.find(params[:status_id])
+
+    rspotify_authenticate
+    spotify_user = RSpotify::User.find(current_user.uid)
+    playlist = RSpotify::Playlist.find(@status.user.uid, @status.playlist)
+    # playlist = RSpotify::Playlist.find('wizzler', @status.playlist)
+    spotify_user.follow(playlist)
+
+    redirect_to @status
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_status

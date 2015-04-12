@@ -9,6 +9,9 @@
     </p>
   </div>
   <div class="panel-body">
+    <div class="pull-right">
+      <%= render "voting", status: @status %>
+    </div>
     <p>
       <%= @status.content %>
     </p>
@@ -20,6 +23,10 @@
 
     <p>
       <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+    </p>
+
+    <p>
+      <%= link_to "Follow Playlist", status_follow_path(@status), method: :post %>
     </p>
     <br>
 

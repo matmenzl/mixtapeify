@@ -25,11 +25,11 @@
                                 <h4 class="media-heading text-uppercase reviews"><%= comment.title %></h4>
                                 <ul class="media-date reviews list-inline">
                                   <li><%= comment.created_at %></li>
-                                  <h5 class="media-reviews"><em>by <%= comment.user.try(:name) %></em></h5>
                                 </ul>
                                 <p class="media-comment">
                                   <%= comment.comment %>
                                 </p>
+                                <h5 class="media-reviews"><em>by <%= comment.user.try(:name) %></em></h5>
                             </div>              
                           </div>
                         </li>  
