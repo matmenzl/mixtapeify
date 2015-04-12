@@ -11,6 +11,8 @@ root to: 'home#home'
 devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :statuses do
     resources :comments
+    post "vote"
+    post "follow"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     acts_as_commentable (4.0.2)
+    acts_as_votable (0.10.0)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
     bcrypt-ruby (3.1.5)
@@ -174,6 +175,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable
+  acts_as_votable (~> 0.10.0)
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 2.0)

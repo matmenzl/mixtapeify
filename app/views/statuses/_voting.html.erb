@@ -1,0 +1,5 @@
+<div class="vote circle">
+  <%= link_to "", status_vote_path(status, dir: "up"), remote: true, method: :post, class: "increment up" %>
+  <%= link_to "", status_vote_path(status, dir: "down"), remote: true, method: :post, class: "increment down" %>
+  <div class="count"><%= status.get_likes.size - status.get_dislikes.size %></div>
+</div>

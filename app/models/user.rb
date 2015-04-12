@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
      :omniauthable, :omniauth_providers => [:spotify]
 
   has_many :statuses, dependent: :destroy
+  acts_as_voter
 
   def self.from_omniauth(auth)
     where(uid: auth.info.id).first_or_create do |user|
