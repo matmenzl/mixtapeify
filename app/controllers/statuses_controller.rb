@@ -29,7 +29,8 @@ class StatusesController < ApplicationController
 
   # GET /statuses/1/edit
   def edit
-    spotify_user = rspotify_authenticate
+    rspotify_authenticate
+    spotify_user = RSpotify::User.find(current_user.uid)
     @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
   end
 
