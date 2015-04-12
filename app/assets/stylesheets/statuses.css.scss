@@ -65,6 +65,7 @@
     border-top: 0;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
+    margin: 0 0 40px;
 }
 
 form#commentForm .comment-input{
@@ -73,7 +74,7 @@ form#commentForm .comment-input{
 
 @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
 
-$size : 10rem;
+$size : 5rem;
 $border-width : .5rem;
 $radius : 1rem; /* try 50% */
 $transition : .3s;

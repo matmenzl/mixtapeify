@@ -25,15 +25,13 @@
       <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
     </p>
 
-    <p>
-      <%= link_to "Follow Playlist", status_follow_path(@status), method: :post %>
-    </p>
-    <br>
+    
+      <%= link_to "Follow Playlist", status_follow_path(@status), method: :post, :class => 'btn btn-success' %>
 
-    <ul class="list-group">
-      <li class="list-group-item"><%= link_to 'Edit', edit_status_path(@status) %></li>
-      <li class="list-group-item"><%= link_to 'Back', statuses_path %></li>
-    </ul>
+    <%= link_to 'Edit', edit_status_path(@status), :class => 'btn btn-info' %>
+    <%= link_to 'Back', statuses_path, :class => 'btn btn-info' %>
+
+    
   </div>
   <%= render "comments" %>
 </div>
