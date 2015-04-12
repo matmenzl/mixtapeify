@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if comment.save
       flash[:notice] = "Your comment has been saved!"
     else
-      flash[:notice] = "Their was a problem saving your comment. Please try again later or contact the support team."
+      flash[:notice] = "There was a problem saving your comment. Please try again later or contact the support team."
     end
     redirect_to status
   end
