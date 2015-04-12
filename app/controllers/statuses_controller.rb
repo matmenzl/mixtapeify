@@ -15,7 +15,7 @@ class StatusesController < ApplicationController
   # GET /statuses/1.json
   def show
     rspotify_authenticate
-    @spotify_user = RSpotify::User.find(status.user.try(:uid))
+    @spotify_user = RSpotify::User.find(@status.user.try(:uid))
     # @spotify_user = RSpotify::User.find("wizzler")
   end
 
