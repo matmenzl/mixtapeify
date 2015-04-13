@@ -1,7 +1,8 @@
 <tr>
-  <td><%= image_tag status.image, width: "70", height: "70", class: "img-responsive" %></td>
+  <td><%= image_tag status.image, width: "600", height: "600", class: "img-responsive" %></td>
   <td><%= link_to status.name, status %></td>
   <td><%= status.content %></td>
+  <td><%= render "voting", status: status %></td>
   <td>
     <%= link_to time_ago_in_words(status.created_at) + " ago", status, :class => 'btn btn-success' %> 
     <% if status.user == current_user %>
@@ -9,5 +10,4 @@
       <%= link_to "Delete", status, method: :delete, data:{ confirm: "Are you sure you want to delete this Hunt?"}, :class => 'btn btn-danger'%>
     <% end %>
   </td>
-  <td><%= render "voting", status: status %></td>
 </tr>
