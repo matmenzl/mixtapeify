@@ -1,16 +1,13 @@
-<div class="status">
-  <div class="pull-right">
-  <%= render "voting", status: status %>
-</div>
-  <%= image_tag status.image, width: "50", height: "50" %>
-  <strong><%= status.name %></strong>
-  <p><%= status.content %></p>
-  <div class="meta">
+<tr>
+  <td><%= image_tag status.image, width: "70", height: "70", class: "img-responsive" %></td>
+  <td><%= link_to status.name, status %></td>
+  <td><%= status.content %></td>
+  <td>
     <%= link_to time_ago_in_words(status.created_at) + " ago", status, :class => 'btn btn-success' %> 
-    <span class="admin">
-       <%= link_to "Edit", edit_status_path(status), :class => 'btn btn-info' %>
-       <%= link_to "Delete", status, method: :delete, data:{ confirm: "Are you sure you want to delete this Hunt?"}, :class => 'btn btn-danger'%>
-    </span>
-
-  </div>
-</div>
+    <% if status.user == current_user %>
+      <%= link_to "Edit", edit_status_path(status), :class => 'btn btn-info' %>
+      <%= link_to "Delete", status, method: :delete, data:{ confirm: "Are you sure you want to delete this Hunt?"}, :class => 'btn btn-danger'%>
+    <% end %>
+  </td>
+  <td><%= render "voting", status: status %></td>
+</tr>

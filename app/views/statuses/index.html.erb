@@ -1,16 +1,35 @@
-<% unless user_signed_in? %>
-  <%= render "jumbotron" %>
-<% end %>
-<div class="page-header">
-  <h1>All Hunts
-  <%= link_to "Post a new Hunt", new_status_path, class: "btn btn-small btn-primary" %>
-</h1>
-</div>
-
-<% @statuses.each do |status| %>
-  <div class="status-<%=status.id%>-container">
-    <%= render status %>
-  </div>
-<% end %>
-
-<%= will_paginate @statuses %>
+<!-- Main -->
+<article id="main">
+  <header>
+    <h2>All Hunts</h2>
+    <%= link_to "Post a new Hunt", new_status_path, class: "button special" %>
+  </header>
+  <section class="wrapper style5">
+    <div class="inner">
+        
+      <section>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @statuses.each do |status| %>
+                <div class="status-<%=status.id%>-container">
+                  <%= render status %>
+                </div>
+              <% end %>
+            </tbody>
+          </table>
+          <%= will_paginate @statuses %>
+        </div>
+      </section>
+    </div>
+  </section>
+</article>

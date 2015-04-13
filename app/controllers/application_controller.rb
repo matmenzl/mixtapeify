@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
  before_action :configure_permitted_parameters, if: :devise_controller?
 
+ def after_sign_out_path
+   root_path
+ end
+
  protected
 
   def configure_permitted_parameters
@@ -16,8 +20,5 @@ class ApplicationController < ActionController::Base
 
   def rspotify_authenticate(user = nil)
     RSpotify.authenticate("e7d5e458e14f4e9ea418dddb9c8b22d0", "dc8ce016ad794c5aa985d3a70b03c799")
-  end
-
-
-  
+  end  
 end
