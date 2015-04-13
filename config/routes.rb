@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   get 'status/index'
 
-root to: 'home#home'
-devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  root to: 'statuses#index'
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :statuses do
     resources :comments
     post "vote"

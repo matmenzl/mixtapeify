@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412133739) do
+ActiveRecord::Schema.define(version: 20150413130306) do
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -36,8 +36,22 @@ ActiveRecord::Schema.define(version: 20150412133739) do
     t.string   "name"
     t.string   "playlist"
     t.string   "image"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
 
+  add_index "statuses", ["cached_votes_down"], name: "index_statuses_on_cached_votes_down"
+  add_index "statuses", ["cached_votes_score"], name: "index_statuses_on_cached_votes_score"
+  add_index "statuses", ["cached_votes_total"], name: "index_statuses_on_cached_votes_total"
+  add_index "statuses", ["cached_votes_up"], name: "index_statuses_on_cached_votes_up"
+  add_index "statuses", ["cached_weighted_average"], name: "index_statuses_on_cached_weighted_average"
+  add_index "statuses", ["cached_weighted_score"], name: "index_statuses_on_cached_weighted_score"
+  add_index "statuses", ["cached_weighted_total"], name: "index_statuses_on_cached_weighted_total"
   add_index "statuses", ["user_id"], name: "index_statuses_on_user_id"
 
   create_table "users", force: true do |t|
