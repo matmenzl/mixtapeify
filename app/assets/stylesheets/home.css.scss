@@ -2,3 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a{
+  #banner &{
+    border: none;
+  }
+  &:hover{
+    text-decoration: none;
+  }
+  &.close{
+    opacity: 1;
+    &:hover{
+      opacity: 1;
+    }
+  }
+}
