@@ -10,14 +10,23 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label :name, "What's so special about this playlist?" %><br>
- <%= f.input :name %>
- <%= f.label :content, "There must be more about this playlist, right?" %><br>
- <%= f.input :content %>
- <%= f.label :playlist, "Select a Spotify playlist:" %><br>
- <%= f.select :playlist, options_for_select(@playlists) %>
-  <div class="form-actions"><br>
-    <%= f.button :submit, "Submit your Hunt" %>
+  <div class="row uniform">
+    <div class="12u 12u$(xsmall)">
+      <%= f.input :name %>
+    </div>
+    <div class="12u$ 12u$(xsmall)">
+      <%= f.input :content %>
+    </div>
+    <div class="12u$">
+      <div class="select-wrapper">
+        <%= f.select :playlist, options_for_select(@playlists) %>
+      </div>
+    </div>
+    <div class="12u$">
+      <ul class="actions">
+          <li><%= f.button :submit, "Submit your Hunt", class: "special" %></li>
+      </ul>
+    </div>
   </div>
-  
 <% end %>
+  
