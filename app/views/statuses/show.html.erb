@@ -1,37 +1,26 @@
-<p id="notice"><%= notice %></p>
+<article id="main">
+  <header>
+    <h2><%= @status.name %></h2>
+    <p><%=@status.content%></p>
+  </header>
+  <section class="wrapper style5">
+    <div class="inner">
+      <section>
+        <%= link_to('Edit', edit_status_path(@status), :class => 'btn btn-info') if @status.user == current_user %>
+        <div class="pull-right">
+          <%= render "voting", status: @status %>
+        </div>
+        <p class="text-center">
+          <iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:<%=@spotify_user.id%>&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe><br>
+          <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br>
+          <%= link_to "Follow Playlist", status_follow_path(@status), method: :post, :class => 'btn btn-success' %>
+        </p>
+      </section>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <p>
-    	<h4>
-      <%= @status.name %>
-      </h4>
-    </p>
-  </div>
-  <div class="panel-body">
-    <div class="pull-right">
-      <%= render "voting", status: @status %>
+      <section>
+        <%= render "comments" %>
+      </section>
+
     </div>
-    <p>
-      <%= @status.content %>
-    </p>
-    <hr>
-
-    <p>
-      <iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:<%=@spotify_user.id%>&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
-    </p>
-
-    <p>
-      <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-    </p>
-
-    
-      <%= link_to "Follow Playlist", status_follow_path(@status), method: :post, :class => 'btn btn-success' %>
-
-    <%= link_to 'Edit', edit_status_path(@status), :class => 'btn btn-info' %>
-    <%= link_to 'Back', statuses_path, :class => 'btn btn-info' %>
-
-    
-  </div>
-  <%= render "comments" %>
-</div>
+  </section>
+</article>
