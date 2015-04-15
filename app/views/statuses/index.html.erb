@@ -21,9 +21,9 @@
             </thead>
             <tbody>
               <% @statuses.each do |status| %>
-                <div class="status-<%=status.id%>-container">
+                <tr class="status-<%=status.id%>-container">
                   <%= render status %>
-                </div>
+                </tr>
               <% end %>
             </tbody>
           </table>
