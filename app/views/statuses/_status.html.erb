@@ -1,4 +1,3 @@
-<tr>
   <td><%= image_tag status.image, width: "600", height: "600", class: "img-responsive" %></td>
   <td><%= link_to status.name, status %></td>
   <td><%= status.content %></td>
@@ -10,4 +9,3 @@
       <%= link_to "Delete", status, method: :delete, data:{ confirm: "Are you sure you want to delete this Hunt?"}, :class => 'btn btn-danger'%>
     <% end %>
   </td>
-</tr>
