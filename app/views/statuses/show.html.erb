@@ -1,19 +1,77 @@
 <article id="main">
   <header>
-    <h2><%= @status.name %></h2>
+    <p><%=@status.name%></p>
+  </header>
+<section class="wrapper style5">
+    <div class="inner">
+      <section>
+ <div class="row">                
+    <div class="col-md-8">
+        <h4>Description</h4>
+        <p><%=@status.content%></p>
+    </div>
+  <div class="row">  
+    <div class="col-md-4">
+        <h4>Voting</h4>
+        <%= render "voting", status: @status %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-9">
+      <h4>Hunter</h4>
+      <p><iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:<%=@spotify_user.id%>&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe><br></br>
+      <h4>Hunted</h4>
+      <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br></p>
+    <%= link_to('Edit', edit_status_path(@status), :class => 'btn btn-info') if @status.user == current_user %>
+  <%= link_to "Follow Playlist", status_follow_path(@status), method: :post, :class => 'btn btn-success' %>
+</div>
+  <section>   
+    <%= render "comments" %>
+  </section>
+                  </div>
+            
+        </section>
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- old 
+<article id="main">
+  <header>
+    <p><%=@status.name%></p>
     <p><%=@status.content%></p>
+
   </header>
   <section class="wrapper style5">
     <div class="inner">
       <section>
-        <%= link_to('Edit', edit_status_path(@status), :class => 'btn btn-info') if @status.user == current_user %>
+        
         <div class="pull-right">
           <%= render "voting", status: @status %>
         </div>
         <p class="text-center">
           <iframe src="https://embed.spotify.com/follow/1/?uri=spotify:user:<%=@spotify_user.id%>&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe><br>
           <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A<%=@spotify_user.id%>%3Aplaylist%3A<%=@status.playlist%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br>
+          <p>
           <%= link_to "Follow Playlist", status_follow_path(@status), method: :post, :class => 'btn btn-success' %>
+          <%= link_to('Edit', edit_status_path(@status), :class => 'btn btn-info') if @status.user == current_user %>
+          </p>
         </p>
       </section>
 
@@ -22,5 +80,5 @@
       </section>
 
     </div>
-  </section>
+  </section> -->
 </article>

@@ -3162,7 +3162,7 @@
 			border: 0;
 			cursor: pointer;
 			display: block;
-			height: 3em;
+			height: 2em;
 			position: absolute;
 			right: 0;
 			top: 0;
@@ -3199,7 +3199,7 @@
 		-ms-transition: background-color 0.2s ease;
 		transition: background-color 0.2s ease;
 		background: #2e3842;
-		height: 3em;
+		height: 2em;
 		left: 0;
 		line-height: 3em;
 		position: fixed;
