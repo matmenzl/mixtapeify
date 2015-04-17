@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
      :omniauthable, :omniauth_providers => [:spotify]
 
   has_many :statuses, dependent: :destroy
+  serialize :spotify_user, Hash
   acts_as_voter
 
   def self.from_omniauth(auth)
@@ -16,7 +17,12 @@ class User < ActiveRecord::Base
       user.image = auth.info.images[0].url
       user.name = auth.info.display_name
       user.password = Devise.friendly_token[0,20]
+      user.spotify_user = RSpotify::User.new(request.env['omniauth.auth']).to_hash
     end
   end
 
+  def follows_playlist? playlist_id
+    spotihunt_user = RSpotify::User.new(spotify_user)
+    spotihunt_user.playlists.map{|p| p.id}.include? playlist_id
+  end
 end

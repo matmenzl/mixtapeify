@@ -1,36 +1,30 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
+  before_action :set_spotihunt_user, only: [:show, :new, :edit, :follow]
 
   # GET /statuses
   # GET /statuses.json
   def index
     authenticate_user! if params[:page]
-    rspotify_authenticate
-
     @statuses = Status.all.paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
   end
 
   # GET /statuses/1
   # GET /statuses/1.json
   def show
-    rspotify_authenticate
-    @spotify_user = RSpotify::User.find(@status.user.try(:uid))
-    # @spotify_user = RSpotify::User.find("wizzler")
+    # rspotify_authenticate
+    # @spotihunt_user = RSpotify::User.find("wizzler")
   end
 
   # GET /statuses/new
   def new
     @status = current_user.statuses.new
-    rspotify_authenticate
-    spotify_user = RSpotify::User.find(current_user.uid)
-    @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
+    @playlists = @spotihunt_user.playlists.map{ |p| [p.name, p.id] }
   end
 
   # GET /statuses/1/edit
   def edit
-    rspotify_authenticate
-    spotify_user = RSpotify::User.find(current_user.uid)
-    @playlists = spotify_user.playlists.map{ |p| [p.name, p.id] }
+    @playlists = @spotihunt_user.playlists.map{ |p| [p.name, p.id] }
   end
 
   # POST /statuses
@@ -83,12 +77,12 @@ class StatusesController < ApplicationController
   def follow
     @status = Status.find(params[:status_id])
 
-    rspotify_authenticate
-    spotify_user = RSpotify::User.find(current_user.uid)
-    playlist = RSpotify::Playlist.find(@status.user.uid, @status.playlist)
+    playlist = RSpotify::Playlist.find(@status.user.try(:uid), @status.playlist)
     # playlist = RSpotify::Playlist.find('wizzler', @status.playlist)
-    spotify_user.follow(playlist)
 
+    @spotihunt_user.follow(playlist)
+
+    flash[:notice] = "You've just followed '#{playlist.name}' playlist!"
     redirect_to @status
   end
 
@@ -101,5 +95,9 @@ class StatusesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
       params.require(:status).permit(:name, :content, :playlist)
+    end
+
+    def set_spotihunt_user
+      @spotihunt_user = RSpotify::User.new(current_user.spotify_user)
     end
 end
