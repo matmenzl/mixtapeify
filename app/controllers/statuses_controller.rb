@@ -1,4 +1,5 @@
 class StatusesController < ApplicationController
+  before_action :auth_user, only: [:show, :new,:edit,:update, :destroy]
   before_action :set_status, only: [:show, :edit, :update, :destroy]
   before_action :set_spotihunt_user, only: [:show, :new, :edit, :follow]
 
@@ -72,6 +73,7 @@ class StatusesController < ApplicationController
   def vote
     @status = Status.find(params[:status_id])
     params[:dir] == "up" ? current_user.likes(@status) : current_user.dislikes(@status)
+    flash[:notice] = "Thanks! Every little counts!"
   end
 
   def follow
@@ -99,5 +101,12 @@ class StatusesController < ApplicationController
 
     def set_spotihunt_user
       @spotihunt_user = RSpotify::User.new(current_user.spotify_user)
+    end
+
+    def auth_user
+      unless user_signed_in?
+        flash[:warning] = "You have to sign in with your spotify account first."
+        redirect_to statuses_path
+      end
     end
 end
