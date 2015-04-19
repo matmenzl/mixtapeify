@@ -1,5 +1,6 @@
 class StatusesController < ApplicationController
   before_action :auth_user, only: [:show, :new,:edit,:update, :destroy]
+  before_action :rspotify_authenticate, only: [:new, :edit, :create, :show, :follow]
   before_action :set_status, only: [:show, :edit, :update, :destroy]
   before_action :set_spotihunt_user, only: [:show, :new, :edit, :follow]
 
