@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) << [:name, :address, :phone]
     end
 
-    # def rspotify_authenticate(user = nil)
-    #   RSpotify.authenticate("e7d5e458e14f4e9ea418dddb9c8b22d0", "dc8ce016ad794c5aa985d3a70b03c799")
-    # end  
+    def rspotify_authenticate
+      RSpotify.authenticate("e7d5e458e14f4e9ea418dddb9c8b22d0", "dc8ce016ad794c5aa985d3a70b03c799")
+    end
 end
