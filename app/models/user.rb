@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
       user.image = auth.info.images[0].url
       user.name = auth.info.display_name
       user.password = Devise.friendly_token[0,20]
-      user.spotify_user = RSpotify::User.new(request.env['omniauth.auth']).to_hash
     end
   end
 
