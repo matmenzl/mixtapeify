@@ -1,2 +1,3 @@
 // $(".status-<%=@status.id%>-container td").remove();
 $(".status-<%=@status.id%>-container").html("<%=j render @status %>")
+$(".playlist-voting").html("<h4>Voting</h4><%=j render 'voting', status: @status %>")

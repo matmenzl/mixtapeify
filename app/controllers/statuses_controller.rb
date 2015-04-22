@@ -21,7 +21,7 @@ class StatusesController < ApplicationController
   # GET /statuses/new
   def new
     @status = current_user.statuses.new
-    @playlists = @spotihunt_user.playlists.map{ |p| [p.name, p.id] }
+    @playlists = @spotihunt_user.playlists.map{ |p| [p.name, p.id] if p.owner.id == current_user.uid }.compact
   end
 
   # GET /statuses/1/edit
