@@ -19,13 +19,13 @@
     </div>
     <div class="12u$">
       <div class="select-wrapper">
-        <%= f.label :playlist, "Select one of your playlists..." %>
+        <%= f.label :playlist, "Select one of your own Spotify-Playlists or..." %>
         <%= f.select :playlist, options_for_select(@playlists) %>
       </div>
     </div>
     <div class="12u$">
       <div class="select-wrapper">
-        <%= label_tag :borrowed_playlist, "...or paste link to playlist you want to share:" %>
+        <%= label_tag :borrowed_playlist, "Select a Playlist Link to another Users Spotify-Playlist" %>
         <%= text_field_tag :borrowed_playlist %>
       </div>
     </div>
