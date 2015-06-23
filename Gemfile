@@ -14,6 +14,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'acts_as_commentable'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'toastr-rails'
+gem 'social-share-button'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

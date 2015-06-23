@@ -264,7 +264,6 @@
 	}
 
 	.row > * {
-		float: left;
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
@@ -1154,10 +1153,12 @@
 	@media screen and (max-width: 736px) {
 		.row > * {
 			padding: 0 0 0 1.5em;
+			clear: both;
 		}
 
 		.row {
 			margin: 0 0 -1px -1.5em;
+			clear: both;
 		}
 
 		.row.uniform > * {
@@ -3064,7 +3065,7 @@
 
 			@media screen and (max-width: 980px) {
 				.wrapper {
-					padding: 4em 3em 2em 3em;
+					padding: 4em 3em 2em 2em;
 				}
 			}
 
