@@ -3560,7 +3560,7 @@
 /* Main */
 
 	#main > header {
-		padding: 12em 0 10em 0;
+		padding: 2em 0 10em 2;
 		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/banner.jpg");
 		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/banner.jpg");
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/banner.jpg");
@@ -3596,19 +3596,19 @@
 
 		@media screen and (max-width: 1280px) {
 			#main > header {
-				padding: 8em 3em 6em 3em;
+				padding: 2em 3em 3em 2em;
 			}
 		}
 
 		@media screen and (max-width: 980px) {
 			#main > header {
-				padding: 10em 3em 8em 3em;
+				padding: 2em 3em 3em 2em;
 			}
 		}
 
 		@media screen and (max-width: 736px) {
 			#main > header {
-				padding: 5em 3em 3em 3em;
+				padding: 2em 3em 3em 2em;
 			}
 
 			#main > header h2 {

@@ -33,8 +33,14 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = current_user.statuses.new(status_params)
-    @status.image = RSpotify::Playlist.find(current_user.uid, @status.playlist).images.first["url"]
-    # @status.image = RSpotify::Playlist.find("wizzler", @status.playlist).images.first["url"]
+    if params[:borrowed_playlist].empty?
+      @status.image = RSpotify::Playlist.find(current_user.uid, @status.playlist).images.first["url"]
+      # @status.image = RSpotify::Playlist.find("wizzler", @status.playlist).images.first["url"]
+    else
+      playlist_attrs = URI(params[:borrowed_playlist]).path.split("/")
+      @status.spotify_uid, @status.playlist = playlist_attrs[2], playlist_attrs[4]
+      @status.image = RSpotify::Playlist.find(@status.spotify_uid, @status.playlist).images.first["url"]
+    end
 
     respond_to do |format|
       if @status.save
