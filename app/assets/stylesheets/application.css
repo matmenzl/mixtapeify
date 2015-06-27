@@ -12,5 +12,6 @@
  *
  *= require toastr
  *= require_tree .
+ *= require plugins/sweet-alert
  *= require_self
  */

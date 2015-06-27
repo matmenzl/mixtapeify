@@ -1,0 +1,20 @@
+<div class="col-md-12">
+  <ul class="social-network social-circle">
+    <li><a href="javascript:;" class="icoRss email-share" title="Share to Email"><i class="fa fa-share-square"></i></a></li>
+    <li><a href="#" class="icoFacebook" title="Facebook" onclick="facebookShare()"><i class="fa fa-facebook"></i></a></li>
+    <li><a class="icoTwitter" title="Twitter" href="https://twitter.com/share" data-via="spotihunt" data-count="none" data-url="<%= status_url(status) %>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+    <li><a href="whatsapp://send" data-text="Take a look at this awesome playlist:" data-href="<%= status_url(status) %>" class="icoWhatsapp"><i class="fa fa-whatsapp"></i></a></li>
+  </ul>       
+</div>
+<script type="text/javascript">
+  function facebookShare(){
+    FB.ui({
+      method: 'feed',
+      link: "<%= Rails.env == 'development' ? 'http://example.com/' : status_url(status) %>",
+      name: "<%= status.name %>",
+      caption: "<%= status.content %>",
+      description: 'Find more cool playlists on spotihunt.com !',
+      picture: "<%= status.image unless Rails.env == 'development' %>"
+    }, function(response){});
+  }
+</script>

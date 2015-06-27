@@ -1,6 +1,7 @@
-<article id="main">
+<article id="main" data-id="<%= @status.id %>">
   <header>
     <p><%=@status.name%></p>
+    <%= render "share_links", status: @status %>
   </header>
   <section class="wrapper style5">
       <div class="inner">
@@ -36,7 +37,7 @@
             <section>   
               <%= render "comments" %>
             </section>
-          </div>    
+          </div>
         </section>
     </div>    
   </section>
