@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require toastr
-//= require social-share-button
+//= require plugins/sweet-alert.min
 //= require_tree .
-

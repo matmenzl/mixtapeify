@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'status/index'
 
+  post "share_status/:id" => "statuses#share", as: "share_playlist"
+
   root to: 'home#home'
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :statuses do

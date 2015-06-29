@@ -95,6 +95,11 @@ class StatusesController < ApplicationController
     redirect_to @status
   end
 
+  def share
+    PlaylistsMailer.share(current_user, params[:data], params[:id]).deliver
+    render nothing: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_status
