@@ -28,7 +28,7 @@
   <script>
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : "<%= Rails.env == 'development' ? '1616039375342096' : '1616038858675481' %>",
+        appId      : '1604200353194666',
         xfbml      : true,
         version    : 'v2.3'
       });
@@ -43,6 +43,19 @@
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
   </script>
+
+<!-- FB Send -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.3&appId=179274055481335";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
 </head>
 <body class="landing">
 <%= custom_bootstrap_flash %>
